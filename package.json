@@ -9,7 +9,9 @@
     "src"
   ],
   "scripts": {
-    "test": "eslint src tests && jest",
+    "lint": "eslint src tests",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "build:cjs": "cross-env BUILD_TYPE=cjs rollup -c -o lib/lightrpc.js",
     "build:umd": "cross-env BUILD_TYPE=umd rollup -c -o dist/lightrpc.js",
     "build:umd:min": "cross-env NODE_ENV=production BUILD_TYPE=umd rollup -c -o dist/lightrpc.min.js",
