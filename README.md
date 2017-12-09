@@ -1,8 +1,8 @@
 # LightRPC
+Tiny JSON-RPC library - batteries not included.
+
 [![npm version](https://img.shields.io/npm/v/lightrpc.svg?style=flat-square)](https://www.npmjs.com/package/lightrpc)
 [![npm downloads](https://img.shields.io/npm/dm/lightrpc.svg?style=flat-square)](https://www.npmjs.com/package/lightrpc)
-
-Tiny JSON-RPC library - batteries not included.
 
 **This project is not stable yet!**
 
