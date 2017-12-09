@@ -1,6 +1,7 @@
 # LightRPC
 Tiny JSON-RPC library - batteries not included.
 
+[![build status](https://img.shields.io/travis/Sekhmet/lightrpc/master.svg?style=flat-square)](https://travis-ci.org/Sekhmet/lightrpc)
 [![npm version](https://img.shields.io/npm/v/lightrpc.svg?style=flat-square)](https://www.npmjs.com/package/lightrpc)
 [![npm downloads](https://img.shields.io/npm/dm/lightrpc.svg?style=flat-square)](https://www.npmjs.com/package/lightrpc)
 
