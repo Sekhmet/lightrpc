@@ -23,7 +23,7 @@ yarn add lightrpc
 
 #### Obtain development copy
 
-```
+```bash
 git clone https://github.com/Sekhmet/lightrpc.git
 cd lightrpc
 npm install
