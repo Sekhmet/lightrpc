@@ -69,10 +69,10 @@ const options = {
 const client = createClient('https://api.steemit.com', options);
 ```
 
-| Option  | Default value |  Description                       |
-|---------|---------------|------------------------------------|
-| timeout | 5000          | Time after request should timeout. |
-
+| Option  | Default value                          | Description                         |
+|---------|----------------------------------------|-------------------------------------|
+| timeout | 5000                                   | Time after request should timeout.  |
+| headers | `{'Content-Type': 'application/json'}` | Headers to be included in requests. |
 ## Running the tests
 
 You can run lint and tests using npm script

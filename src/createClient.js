@@ -20,6 +20,9 @@ export default function createClient(address, options = {}) {
 
   const clientOptions = {
     timeout: 5000,
+    headers: {
+      'Content-Type': 'application/json',
+    },
     ...options,
   };
 
@@ -28,6 +31,7 @@ export default function createClient(address, options = {}) {
   const fetchURL = request =>
     fetch(address, {
       body: JSON.stringify(request),
+      headers: new fetch.Headers(clientOptions.headers),
       method: 'post',
       mode: 'cors',
     });
