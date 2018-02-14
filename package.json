@@ -1,6 +1,6 @@
 {
   "name": "lightrpc",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Bare-bones JSON-RPC client",
   "main": "lib/lightrpc.js",
   "files": [
@@ -15,7 +15,8 @@
     "build:cjs": "cross-env BUILD_TYPE=cjs rollup -c -o lib/lightrpc.js",
     "build:umd": "cross-env BUILD_TYPE=umd rollup -c -o dist/lightrpc.js",
     "build:umd:min": "cross-env NODE_ENV=production BUILD_TYPE=umd rollup -c -o dist/lightrpc.min.js",
-    "build": "npm run build:cjs && npm run build:umd && npm run build:umd:min"
+    "build": "npm run build:cjs && npm run build:umd && npm run build:umd:min",
+    "prepublish": "npm run build"
   },
   "author": "Wiktor Tkaczyński <wiktor.tkaczynski@gmail.com>",
   "license": "MIT",
