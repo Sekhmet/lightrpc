@@ -1,10 +1,3 @@
-let setTimeout;
-if (typeof window !== 'undefined' && window.setTimeout) {
-  ({ setTimeout } = window);
-} else {
-  ({ setTimeout } = require('timers')); // eslint-disable-line global-require
-}
-
 /**
  * Adds timeout to promise.
  * @param {number} timeout Timeout in miliseconds.
