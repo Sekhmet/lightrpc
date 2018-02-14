@@ -31,7 +31,7 @@ export default function createClient(address, options = {}) {
   const fetchURL = request =>
     fetch(address, {
       body: JSON.stringify(request),
-      headers: new fetch.Headers(clientOptions.headers),
+      headers: clientOptions.headers,
       method: 'post',
       mode: 'cors',
     });
