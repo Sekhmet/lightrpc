@@ -1,6 +1,6 @@
 {
   "name": "lightrpc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Bare-bones JSON-RPC client",
   "main": "lib/lightrpc.js",
   "files": [
