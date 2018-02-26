@@ -43,7 +43,7 @@ export default function createClient(address, options = {}) {
    * @param {Function} callback A callback that is called when response has been received
    * or request failed.
    */
-  const send = (method, params, callback) => {
+  const send = (method, params, callback, timeout=clientOptions.timeout) => {
     if (typeof method !== 'string') throw new Error('InvalidArgument: method has to be a string');
     if (!(params instanceof Array)) throw new Error('InvalidArgument: params has to be an array');
     if (typeof callback !== 'function') {
@@ -58,7 +58,7 @@ export default function createClient(address, options = {}) {
     };
     nextRequestId += 1;
 
-    createTimeout(clientOptions.timeout, fetchURL(request))
+    createTimeout(timeout, fetchURL(request))
       .then(res => res.json())
       .then((res) => {
         if (res.error) {
