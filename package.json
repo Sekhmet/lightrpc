@@ -1,20 +1,17 @@
 {
   "name": "lightrpc",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "Bare-bones JSON-RPC client",
   "main": "lib/lightrpc.js",
-  "files": [
-    "dist",
-    "lib",
-    "src"
-  ],
+  "files": ["dist", "lib", "src"],
   "scripts": {
     "lint": "eslint src tests",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "build:cjs": "cross-env BUILD_TYPE=cjs rollup -c -o lib/lightrpc.js",
     "build:umd": "cross-env BUILD_TYPE=umd rollup -c -o dist/lightrpc.js",
-    "build:umd:min": "cross-env NODE_ENV=production BUILD_TYPE=umd rollup -c -o dist/lightrpc.min.js",
+    "build:umd:min":
+      "cross-env NODE_ENV=production BUILD_TYPE=umd rollup -c -o dist/lightrpc.min.js",
     "build": "npm run build:cjs && npm run build:umd && npm run build:umd:min",
     "prepublish": "npm run build"
   },
@@ -26,6 +23,7 @@
     "cross-env": "^5.1.1",
     "eslint": "^4.12.1",
     "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",
     "jest": "^21.2.1",
     "rollup": "^0.52.1",

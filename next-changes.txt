@@ -1,0 +1,4 @@
+- Client is now a class.
+- You can pass thrid argument to send to override some default options on current request.
+- Use Prettier.
+- Migrated to yarn.
