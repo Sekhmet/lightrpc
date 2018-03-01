@@ -1,4 +1,4 @@
-import Client from '../src/index';
+import Client from '../lib/lightrpc';
 
 describe('createClient', () => {
   it('should return an client', () => {

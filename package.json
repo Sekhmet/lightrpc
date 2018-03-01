@@ -13,6 +13,7 @@
     "build:umd:min":
       "cross-env NODE_ENV=production BUILD_TYPE=umd rollup -c -o dist/lightrpc.min.js",
     "build": "npm run build:cjs && npm run build:umd && npm run build:umd:min",
+    "pretest": "npm run build",
     "prepublish": "npm run build"
   },
   "author": "Wiktor Tkaczyński <wiktor.tkaczynski@gmail.com>",
