@@ -1,3 +1,4 @@
+1.0.0@-beta.1:
 - Client is now a class.
 - You can pass thrid argument to send to override some default options on current request.
 - Use Prettier.

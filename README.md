@@ -42,32 +42,34 @@ Or if you want to use not minified version
 
 ```js
 // using UMD (browser)
-const client = window.LightRPC.createClient('https://api.steemit.com');
+const client = new window.LightRPC.Client('https://api.steemit.com');
 
 // using CommonJS
-const createClient = require('lightrpc').createClient;
-const client = createClient('https://api.steemit.com');
+const createClient = require('lightrpc').Client;
+const client = new Client('https://api.steemit.com');
 
 // using ES6 modules
-import { createClient } from 'lightrpc';
-const client = createClient('https://api.steemit.com');
+import { Client } from 'lightrpc';
+const client = new Client('https://api.steemit.com');
 
 // sending requests
-client.send('get_accounts', [usernames], function(err, result) {
+client.send('get_accounts', [usernames], null, function(err, result) {
   if (err !== null) console.error(err);
   console.log('response', result);
 });
 ```
 
 #### Options
-You can configure client by using optional options parameter to `createClient`.
+You can configure client by using optional options parameter to `Client` constructor.
 ```js
 const options = {
   timeout: 5000,
 };
 
-const client = createClient('https://api.steemit.com', options);
+const client = new Client('https://api.steemit.com', options);
 ```
+
+You can change some (or all) options for specific request using 3 parameter to `send` method.
 
 | Option  | Default value                          | Description                         |
 |---------|----------------------------------------|-------------------------------------|
