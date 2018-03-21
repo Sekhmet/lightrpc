@@ -47,14 +47,14 @@ Or if you want to use not minified version
 
 ```js
 // using UMD (browser)
-const client = new window.LightRPC.Client('https://api.steemit.com');
+const client = new window.LightRPC('https://api.steemit.com');
 
 // using CommonJS
-const Client = require('lightrpc').Client;
+const Client = require('lightrpc');
 const client = new Client('https://api.steemit.com');
 
 // using ES6 modules
-import { Client } from 'lightrpc';
+import Client from 'lightrpc';
 const client = new Client('https://api.steemit.com');
 
 // sending requests
