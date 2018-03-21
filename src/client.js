@@ -35,6 +35,13 @@ export default class Client {
     });
   }
 
+  call(method, params, requestOptions, callback) {
+    if (typeof method !== 'string') throw new Error('InvalidArgument: method has to be a string');
+    if (!(params instanceof Array)) throw new Error('InvalidArgument: params has to be an array');
+
+    this.send({ method, params }, requestOptions, callback);
+  }
+
   send(request, requestOptions, callback) {
     if (typeof request !== 'object')
       throw new Error('InvalidArgument: request has to be an object');

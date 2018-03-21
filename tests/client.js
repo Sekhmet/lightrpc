@@ -23,7 +23,17 @@ describe('createClient', () => {
     });
   });
 
-  it('should handle single request', done => {
+  it('should handle single request using call', done => {
+    const client = new Client('https://api.steemit.com');
+    client.call('get_accounts', [['sekhmet']], null, (err, res) => {
+      expect(err).toBe(null);
+      expect(res[0].id).toBe(168165);
+
+      done();
+    });
+  });
+
+  it('should handle single request using send', done => {
     const request = {
       method: 'get_accounts',
       params: [['sekhmet']],

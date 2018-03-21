@@ -58,6 +58,11 @@ import Client from 'lightrpc';
 const client = new Client('https://api.steemit.com');
 
 // sending requests
+client.call('get_accounts', ['sekhmet'], null, function(err, result) {
+  if (err !== null) console.error(err);
+  console.log('response', result);
+});
+
 const request = {
   method: 'get_accounts',
   params: ['sekhmet'],
