@@ -45,8 +45,8 @@ describe('createClient', () => {
         params: [['sekhmet']],
       },
       {
-        method: 'get_accounts',
-        params: [['fabien']],
+        method: 'get_config',
+        params: [],
       },
     ];
 
@@ -58,7 +58,7 @@ describe('createClient', () => {
       const respB = res[1];
 
       expect(respA[0].id).toBe(168165);
-      expect(respB[0].id).toBe(26921);
+      expect(respB.IS_TEST_NET).toBe(false);
 
       done();
     });

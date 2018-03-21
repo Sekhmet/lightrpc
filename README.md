@@ -1,4 +1,5 @@
 # LightRPC
+
 Tiny JSON-RPC library - batteries not included.
 
 [![build status](https://img.shields.io/travis/Sekhmet/lightrpc/master.svg?style=flat-square)](https://travis-ci.org/Sekhmet/lightrpc)
@@ -15,6 +16,7 @@ It is designed to be small and work in browser and server.
 ### Installing
 
 #### Install using npm or yarn
+
 ```bash
 npm install lightrpc
 # or if you are using yarn
@@ -32,10 +34,13 @@ npm install
 ## Usage
 
 #### Usage in browser
+
 ```html
 <script src="https://unpkg.com/lightrpc/dist/lightrpc.js"></script>
 ```
+
 Or if you want to use not minified version
+
 ```html
 <script src="https://unpkg.com/lightrpc/dist/lightrpc.min.js"></script>
 ```
@@ -53,14 +58,35 @@ import { Client } from 'lightrpc';
 const client = new Client('https://api.steemit.com');
 
 // sending requests
-client.send('get_accounts', [usernames], null, function(err, result) {
+const request = {
+  method: 'get_accounts',
+  params: ['sekhmet'],
+};
+client.send(request, null, function(err, result) {
+  if (err !== null) console.error(err);
+  console.log('response', result);
+});
+
+const requests = [
+  {
+    method: 'get_accounts',
+    params: ['sekhmet'],
+  },
+  {
+    method: 'get_dynamic_global_properties',
+    params: [],
+  },
+];
+client.sendBatch(requests, null, function(err, result) {
   if (err !== null) console.error(err);
   console.log('response', result);
 });
 ```
 
 #### Options
+
 You can configure client by using optional options parameter to `Client` constructor.
+
 ```js
 const options = {
   timeout: 5000,
@@ -72,9 +98,10 @@ const client = new Client('https://api.steemit.com', options);
 You can change some (or all) options for specific request using 3 parameter to `send` method.
 
 | Option  | Default value                          | Description                         |
-|---------|----------------------------------------|-------------------------------------|
+| ------- | -------------------------------------- | ----------------------------------- |
 | timeout | 5000                                   | Time after request should timeout.  |
 | headers | `{'Content-Type': 'application/json'}` | Headers to be included in requests. |
+
 ## Running the tests
 
 You can run lint and tests using npm script
@@ -82,7 +109,6 @@ You can run lint and tests using npm script
 ```
 npm run test
 ```
-
 
 ## Versioning
 
