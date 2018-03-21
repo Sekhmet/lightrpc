@@ -50,7 +50,7 @@ Or if you want to use not minified version
 const client = new window.LightRPC.Client('https://api.steemit.com');
 
 // using CommonJS
-const createClient = require('lightrpc').Client;
+const Client = require('lightrpc').Client;
 const client = new Client('https://api.steemit.com');
 
 // using ES6 modules
