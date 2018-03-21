@@ -1,5 +1,9 @@
-1.0.0@-beta.1:
+1.0.0-beta.1:
 - Client is now a class.
 - You can pass thrid argument to send to override some default options on current request.
 - Use Prettier.
 - Migrated to yarn.
+
+1.0.0-beta.2:
+- send method now accepts request object.
+- Added sendBatch method.
