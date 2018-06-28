@@ -58,14 +58,14 @@ import Client from 'lightrpc';
 const client = new Client('https://api.steemit.com');
 
 // sending requests
-client.call('get_accounts', ['sekhmet'], null, function(err, result) {
+client.call('get_accounts', [['sekhmet']], null, function(err, result) {
   if (err !== null) console.error(err);
   console.log('response', result);
 });
 
 const request = {
   method: 'get_accounts',
-  params: ['sekhmet'],
+  params: [['sekhmet']],
 };
 client.send(request, null, function(err, result) {
   if (err !== null) console.error(err);
@@ -75,7 +75,7 @@ client.send(request, null, function(err, result) {
 const requests = [
   {
     method: 'get_accounts',
-    params: ['sekhmet'],
+    params: [['sekhmet']],
   },
   {
     method: 'get_dynamic_global_properties',
@@ -121,7 +121,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Wiktor Tkaczyński** - [Sekhmet](https://github.com/Sekhmet)
+- **Wiktor Tkaczyński** - [Sekhmet](https://github.com/Sekhmet)
 
 See also the list of [contributors](https://github.com/Sekhmet/lightrpc/contributors) who participated in this project.
 
