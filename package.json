@@ -3,15 +3,18 @@
   "version": "1.0.0-beta.4",
   "description": "Bare-bones JSON-RPC client",
   "main": "lib/lightrpc.js",
-  "files": ["dist", "lib", "src"],
+  "files": [
+    "dist",
+    "lib",
+    "src"
+  ],
   "scripts": {
     "lint": "eslint src tests",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "build:cjs": "cross-env BUILD_TYPE=cjs rollup -c -o lib/lightrpc.js",
     "build:umd": "cross-env BUILD_TYPE=umd rollup -c -o dist/lightrpc.js",
-    "build:umd:min":
-      "cross-env NODE_ENV=production BUILD_TYPE=umd rollup -c -o dist/lightrpc.min.js",
+    "build:umd:min": "cross-env NODE_ENV=production BUILD_TYPE=umd rollup -c -o dist/lightrpc.min.js",
     "build": "npm run build:cjs && npm run build:umd && npm run build:umd:min",
     "pretest": "npm run build",
     "prepublish": "npm run build"
@@ -19,6 +22,7 @@
   "author": "Wiktor Tkaczyński <wiktor.tkaczynski@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "cross-env": "^5.1.1",
