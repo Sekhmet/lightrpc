@@ -58,7 +58,7 @@ import Client from 'lightrpc';
 const client = new Client('https://api.steemit.com');
 
 // sending requests
-client.call('get_accounts', [['sekhmet']], null, function(err, result) {
+client.call('get_accounts', [['sekhmet']], function(err, result) {
   if (err !== null) console.error(err);
   console.log('response', result);
 });
@@ -67,7 +67,7 @@ const request = {
   method: 'get_accounts',
   params: [['sekhmet']],
 };
-client.send(request, null, function(err, result) {
+client.send(request, function(err, result) {
   if (err !== null) console.error(err);
   console.log('response', result);
 });
@@ -82,7 +82,7 @@ const requests = [
     params: [],
   },
 ];
-client.sendBatch(requests, null, function(err, result) {
+client.sendBatch(requests, function(err, result) {
   if (err !== null) console.error(err);
   console.log('response', result);
 });

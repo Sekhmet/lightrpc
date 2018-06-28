@@ -1,5 +1,4 @@
 import createTimeout from './utils/createTimeout';
-import { JSONRPCNoResult } from './utils/errors';
 
 let fetch;
 if (typeof window !== 'undefined' && window.fetch) {
@@ -36,29 +35,45 @@ export default class Client {
   }
 
   call(method, params, requestOptions, callback) {
-    if (typeof method !== 'string') throw new Error('InvalidArgument: method has to be a string');
-    if (!(params instanceof Array)) throw new Error('InvalidArgument: params has to be an array');
+    const effectiveCallback = typeof requestOptions === 'function' ? requestOptions : callback;
 
-    this.send({ method, params }, requestOptions, callback);
+    this.send({ method, params }, requestOptions, effectiveCallback);
   }
 
   send(request, requestOptions, callback) {
-    if (typeof request !== 'object')
-      throw new Error('InvalidArgument: request has to be an object');
+    const effectiveCallback = typeof requestOptions === 'function' ? requestOptions : callback;
 
-    this.sendBatch([request], requestOptions, (err, res) => {
-      if (err) return callback(err, res);
+    let usedOptions = this.options;
+    if (typeof requestOptions === 'object') {
+      usedOptions = { ...usedOptions, ...requestOptions };
+    }
 
-      return callback(err, res[0]);
-    });
+    const rpcRequest = {
+      jsonrpc: '2.0',
+      ...request,
+    };
+
+    createTimeout(usedOptions.timeout, this.fetchURL(rpcRequest, usedOptions))
+      .then(res => res.json())
+      .then(res => {
+        if (res.error) {
+          throw new Error('Response contains error', res.error);
+        }
+
+        if (!res.result) {
+          throw new Error("Response doesn't contain results");
+        }
+
+        return res;
+      })
+      .then(res => {
+        effectiveCallback(null, res.result);
+      })
+      .catch(err => effectiveCallback(err, null));
   }
 
   sendBatch(requests, requestOptions, callback) {
-    if (!(requests instanceof Array))
-      throw new Error('InvalidArgument: requests has to be an array');
-    if (typeof callback !== 'function') {
-      throw new Error('InvalidArgument: callback has to be a function');
-    }
+    const effectiveCallback = typeof requestOptions === 'function' ? requestOptions : callback;
 
     const rpcRequests = requests.map(request => ({
       jsonrpc: '2.0',
@@ -74,14 +89,11 @@ export default class Client {
       .then(res => res.json())
       .then(res => {
         if (res.length < 1) {
-          throw new JSONRPCNoResult("Response doesn't contain results");
+          throw new Error("Response doesn't contain results");
         }
         return res;
       })
-      .then(res => {
-        callback(null, res.map(singleResponse => singleResponse.result));
-        return res;
-      })
-      .catch(err => callback(err, null));
+      .then(res => effectiveCallback(null, res.map(singleResponse => singleResponse.result)))
+      .catch(err => effectiveCallback(err, null));
   }
 }

@@ -15,7 +15,7 @@ describe('createClient', () => {
     };
 
     const client = new Client('https://api.steemit.com');
-    client.send(request, null, (err, res) => {
+    client.send(request, (err, res) => {
       expect(err instanceof Error).toBe(true);
       expect(res).toBe(null);
 
@@ -25,7 +25,7 @@ describe('createClient', () => {
 
   it('should handle single request using call', done => {
     const client = new Client('https://api.steemit.com');
-    client.call('get_accounts', [['sekhmet']], null, (err, res) => {
+    client.call('get_accounts', [['sekhmet']], (err, res) => {
       expect(err).toBe(null);
       expect(res[0].id).toBe(168165);
 
@@ -40,7 +40,7 @@ describe('createClient', () => {
     };
 
     const client = new Client('https://api.steemit.com');
-    client.send(request, null, (err, res) => {
+    client.send(request, (err, res) => {
       expect(err).toBe(null);
       expect(res[0].id).toBe(168165);
 
@@ -61,7 +61,7 @@ describe('createClient', () => {
     ];
 
     const client = new Client('https://api.steemit.com');
-    client.sendBatch(requests, null, (err, res) => {
+    client.sendBatch(requests, (err, res) => {
       expect(err).toBe(null);
 
       const respA = res[0];
