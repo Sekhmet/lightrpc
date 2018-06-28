@@ -6,7 +6,6 @@ module.exports = {
   },
   globals: {
     window: true,
-    fetch: true,
   },
   rules: {
     'import/prefer-default-export': 0,
