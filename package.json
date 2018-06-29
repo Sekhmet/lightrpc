@@ -1,7 +1,8 @@
 {
   "name": "lightrpc",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0",
   "description": "Bare-bones JSON-RPC client",
+  "repository": "https://github.com/Sekhmet/lightrpc.git",
   "main": "lib/lightrpc.js",
   "files": [
     "dist",
