@@ -1,3 +1,3 @@
-import createClient from './createClient';
+import Client from './client';
 
-export { createClient };
+export default Client;

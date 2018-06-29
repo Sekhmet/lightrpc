@@ -1,7 +1,8 @@
 {
   "name": "lightrpc",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "Bare-bones JSON-RPC client",
+  "repository": "https://github.com/Sekhmet/lightrpc.git",
   "main": "lib/lightrpc.js",
   "files": [
     "dist",
@@ -16,22 +17,27 @@
     "build:umd": "cross-env BUILD_TYPE=umd rollup -c -o dist/lightrpc.js",
     "build:umd:min": "cross-env NODE_ENV=production BUILD_TYPE=umd rollup -c -o dist/lightrpc.min.js",
     "build": "npm run build:cjs && npm run build:umd && npm run build:umd:min",
+    "pretest": "npm run build",
     "prepublish": "npm run build"
   },
   "author": "Wiktor Tkaczyński <wiktor.tkaczynski@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "cross-env": "^5.1.1",
-    "eslint": "^4.12.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "jest": "^21.2.1",
-    "rollup": "^0.52.1",
-    "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-uglify": "^2.0.1"
+    "eslint": "^5.0.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-prettier": "^2.6.1",
+    "jest": "^23.2.0",
+    "rollup": "^0.62.0",
+    "rollup-plugin-babel": "^3.0.5",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-uglify": "^4.0.0"
   },
   "dependencies": {
     "cross-fetch": "^1.1.1"
