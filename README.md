@@ -36,13 +36,13 @@ npm install
 #### Usage in browser
 
 ```html
-<script src="https://unpkg.com/lightrpc/dist/lightrpc.js"></script>
+<script src="https://unpkg.com/lightrpc/dist/lightrpc.min.js"></script>
 ```
 
 Or if you want to use not minified version
 
 ```html
-<script src="https://unpkg.com/lightrpc/dist/lightrpc.min.js"></script>
+<script src="https://unpkg.com/lightrpc/dist/lightrpc.js"></script>
 ```
 
 ```js
